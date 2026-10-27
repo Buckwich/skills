@@ -7,7 +7,9 @@ Interview the user relentlessly until you reach a shared understanding. Map this
 
 Work the tree in **rounds**. The **frontier** is every decision whose prerequisites are already settled: the questions you can ask _now_ without guessing at answers you haven't heard yet. Ask the whole frontier in one round: number each question and give your recommended answer. Then wait for the user's answers before the next round.
 
-Format a round like so:
+When the harness has a structured question tool (Claude Code: `AskUserQuestion`), ask every round through it, never as plain text. Put the recommended option first with "(Recommended)" appended to its label, and put the facts the user needs to decide into the question body. If the frontier holds more questions than one call allows, ask them in consecutive calls within the same round.
+
+Only without such a tool, format a round as text like so:
 
 ```
 ❓ **Q1** - **<question title>**: <question body, might be multiple paragraphs, including multiple choices>
